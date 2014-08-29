@@ -1,0 +1,81 @@
+8
+
+dir
+262
+svn://tron.homeunix.org/wolf3d/trunk/GP2X
+svn://tron.homeunix.org/wolf3d
+
+
+
+2009-02-24T10:41:11.620048Z
+247
+moritz
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+dcf0a5d0-9365-db11-ba42-000461428c89
+
+gp2x.cpp
+file
+
+
+
+
+2013-08-26T12:55:30.000000Z
+2dcbce4ba3c220671f06d55c259dfe6f
+2009-02-24T10:41:11.620048Z
+247
+moritz
+
+fmopl.h
+file
+
+
+
+
+2013-08-26T12:55:30.000000Z
+726f364f790dae198b3f442dfbd5ab0c
+2009-01-22T14:40:31.698879Z
+245
+moritz
+has-props
+
+gp2x.h
+file
+
+
+
+
+2013-08-26T12:55:30.000000Z
+7d108eedd23a5101144fbb3887f22a4f
+2009-02-24T10:41:11.620048Z
+247
+moritz
+
+fmopl_940
+dir
+
+fmopl.cpp
+file
+
+
+
+
+2013-08-26T12:55:30.000000Z
+8777d0949be35e34ab854ac9c836cb77
+2009-01-22T14:40:31.698879Z
+245
+moritz
+has-props
+

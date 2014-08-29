@@ -1,0 +1,109 @@
+# Project: Wolf4SDL
+# Makefile created by Dev-C++ 5.7.1
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = OBJ/wl_text.o OBJ/id_ca.o OBJ/id_in.o OBJ/id_pm.o OBJ/id_sd.o OBJ/id_us_1.o OBJ/id_vh.o OBJ/id_vl.o OBJ/signon.o OBJ/wl_act1.o OBJ/wl_act2.o OBJ/wl_agent.o OBJ/wl_debug.o OBJ/wl_draw.o OBJ/wl_game.o OBJ/wl_inter.o OBJ/wl_main.o OBJ/wl_menu.o OBJ/wl_play.o OBJ/wl_state.o OBJ/sdl_winmain.o OBJ/fmopl.o OBJ/wl_atmos.o OBJ/wl_dir3dspr.o OBJ/wl_floorceiling.o OBJ/wl_parallax.o OBJ/wl_shade.o OBJ/mpclient.o
+LINKOBJ  = OBJ/wl_text.o OBJ/id_ca.o OBJ/id_in.o OBJ/id_pm.o OBJ/id_sd.o OBJ/id_us_1.o OBJ/id_vh.o OBJ/id_vl.o OBJ/signon.o OBJ/wl_act1.o OBJ/wl_act2.o OBJ/wl_agent.o OBJ/wl_debug.o OBJ/wl_draw.o OBJ/wl_game.o OBJ/wl_inter.o OBJ/wl_main.o OBJ/wl_menu.o OBJ/wl_play.o OBJ/wl_state.o OBJ/sdl_winmain.o OBJ/fmopl.o OBJ/wl_atmos.o OBJ/wl_dir3dspr.o OBJ/wl_floorceiling.o OBJ/wl_parallax.o OBJ/wl_shade.o OBJ/mpclient.o
+LIBS     = -L"D:/Dev-Cpp/MinGW64/lib32" -L"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32" -L"D:/W3DMP/lib" -static-libgcc -lws2_32 -mwindows -lmingw32 -lSDL -lSDL_mixer -m32
+INCS     = -I"D:/Dev-Cpp/MinGW64/include" -I"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include" -I"D:/W3DMP/include"
+CXXINCS  = -I"D:/Dev-Cpp/MinGW64/include" -I"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include/c++" -I"D:/W3DMP/include"
+BIN      = OBJ/Wolf4SDL.exe
+CXXFLAGS = $(CXXINCS) -m32
+CFLAGS   = $(INCS) -m32 -Dmain=SDL_main
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+OBJ/wl_text.o: wl_text.cpp
+	$(CPP) -c wl_text.cpp -o OBJ/wl_text.o $(CXXFLAGS)
+
+OBJ/id_ca.o: id_ca.cpp
+	$(CPP) -c id_ca.cpp -o OBJ/id_ca.o $(CXXFLAGS)
+
+OBJ/id_in.o: id_in.cpp
+	$(CPP) -c id_in.cpp -o OBJ/id_in.o $(CXXFLAGS)
+
+OBJ/id_pm.o: id_pm.cpp
+	$(CPP) -c id_pm.cpp -o OBJ/id_pm.o $(CXXFLAGS)
+
+OBJ/id_sd.o: id_sd.cpp
+	$(CPP) -c id_sd.cpp -o OBJ/id_sd.o $(CXXFLAGS)
+
+OBJ/id_us_1.o: id_us_1.cpp
+	$(CPP) -c id_us_1.cpp -o OBJ/id_us_1.o $(CXXFLAGS)
+
+OBJ/id_vh.o: id_vh.cpp
+	$(CPP) -c id_vh.cpp -o OBJ/id_vh.o $(CXXFLAGS)
+
+OBJ/id_vl.o: id_vl.cpp
+	$(CPP) -c id_vl.cpp -o OBJ/id_vl.o $(CXXFLAGS)
+
+OBJ/signon.o: signon.cpp
+	$(CPP) -c signon.cpp -o OBJ/signon.o $(CXXFLAGS)
+
+OBJ/wl_act1.o: wl_act1.cpp
+	$(CPP) -c wl_act1.cpp -o OBJ/wl_act1.o $(CXXFLAGS)
+
+OBJ/wl_act2.o: wl_act2.cpp
+	$(CPP) -c wl_act2.cpp -o OBJ/wl_act2.o $(CXXFLAGS)
+
+OBJ/wl_agent.o: wl_agent.cpp
+	$(CPP) -c wl_agent.cpp -o OBJ/wl_agent.o $(CXXFLAGS)
+
+OBJ/wl_debug.o: wl_debug.cpp
+	$(CPP) -c wl_debug.cpp -o OBJ/wl_debug.o $(CXXFLAGS)
+
+OBJ/wl_draw.o: wl_draw.cpp
+	$(CPP) -c wl_draw.cpp -o OBJ/wl_draw.o $(CXXFLAGS)
+
+OBJ/wl_game.o: wl_game.cpp
+	$(CPP) -c wl_game.cpp -o OBJ/wl_game.o $(CXXFLAGS)
+
+OBJ/wl_inter.o: wl_inter.cpp
+	$(CPP) -c wl_inter.cpp -o OBJ/wl_inter.o $(CXXFLAGS)
+
+OBJ/wl_main.o: wl_main.cpp
+	$(CPP) -c wl_main.cpp -o OBJ/wl_main.o $(CXXFLAGS)
+
+OBJ/wl_menu.o: wl_menu.cpp
+	$(CPP) -c wl_menu.cpp -o OBJ/wl_menu.o $(CXXFLAGS)
+
+OBJ/wl_play.o: wl_play.cpp
+	$(CPP) -c wl_play.cpp -o OBJ/wl_play.o $(CXXFLAGS)
+
+OBJ/wl_state.o: wl_state.cpp
+	$(CPP) -c wl_state.cpp -o OBJ/wl_state.o $(CXXFLAGS)
+
+OBJ/sdl_winmain.o: sdl_winmain.cpp
+	$(CPP) -c sdl_winmain.cpp -o OBJ/sdl_winmain.o $(CXXFLAGS)
+
+OBJ/fmopl.o: mame/fmopl.cpp
+	$(CPP) -c mame/fmopl.cpp -o OBJ/fmopl.o $(CXXFLAGS)
+
+OBJ/wl_atmos.o: wl_atmos.cpp
+	$(CPP) -c wl_atmos.cpp -o OBJ/wl_atmos.o $(CXXFLAGS)
+
+OBJ/wl_dir3dspr.o: wl_dir3dspr.cpp
+	$(CPP) -c wl_dir3dspr.cpp -o OBJ/wl_dir3dspr.o $(CXXFLAGS)
+
+OBJ/wl_floorceiling.o: wl_floorceiling.cpp
+	$(CPP) -c wl_floorceiling.cpp -o OBJ/wl_floorceiling.o $(CXXFLAGS)
+
+OBJ/wl_parallax.o: wl_parallax.cpp
+	$(CPP) -c wl_parallax.cpp -o OBJ/wl_parallax.o $(CXXFLAGS)
+
+OBJ/wl_shade.o: wl_shade.cpp
+	$(CPP) -c wl_shade.cpp -o OBJ/wl_shade.o $(CXXFLAGS)
+
+OBJ/mpclient.o: mpclient.cpp
+	$(CPP) -c mpclient.cpp -o OBJ/mpclient.o $(CXXFLAGS)
