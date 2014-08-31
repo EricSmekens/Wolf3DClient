@@ -9,6 +9,8 @@
 #include <TIME.H>
 #endif
 
+#include "mpclient.h"
+#include <thread>
 
 /*
 =============================================================================
@@ -50,6 +52,8 @@ void SetupGameLevel (void);
 void DrawPlayScreen (void);
 void LoadLatchMem (void);
 void GameLoop (void);
+
+MPClient gameClient;
 
 /*
 =============================================================================
@@ -1368,6 +1372,9 @@ void Died (void)
 
 void GameLoop (void)
 {
+	//Testlocation for creating a client.
+	gameClient.startMPClient();
+	gameClient.sendbyMPClient("Hello!");
     boolean died;
 #ifdef MYPROFILE
     clock_t start,end;
