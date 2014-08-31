@@ -15,8 +15,6 @@
     #include <unistd.h>
 #endif
 
-#include "mpclient.h"
-
 #include "wl_def.h"
 #pragma hdrstop
 
@@ -1019,8 +1017,6 @@ CP_ViewScores (int)
 int
 CP_NewGame (int)
 {
-	MPClient client;
-	client.startMPClient();
     int which, episode;
 
 #ifdef SPEAR
