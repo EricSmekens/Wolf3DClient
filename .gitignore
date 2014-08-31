@@ -9,3 +9,4 @@ OBJ
 *.dsw
 *.sln
 *.vcproj
+Makefile.win
