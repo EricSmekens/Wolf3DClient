@@ -325,6 +325,7 @@ void PollKeyboardMove (void)
         controlx -= delta;
     if (Keyboard[dirscan[di_east]])
         controlx += delta;
+        
 }
 
 
@@ -1054,6 +1055,7 @@ void StartBonusFlash (void)
 
 void StartDamageFlash (int damage)
 {
+	gameClient.sendbyMPClient("Received dmg");
     damagecount += damage;
 }
 
@@ -1257,6 +1259,8 @@ think:
 ===================
 */
 int32_t funnyticount;
+
+
 
 
 void PlayLoop (void)
