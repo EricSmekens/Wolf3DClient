@@ -6,9 +6,9 @@ CC       = gcc.exe
 WINDRES  = windres.exe
 OBJ      = OBJ/wl_text.o OBJ/id_ca.o OBJ/id_in.o OBJ/id_pm.o OBJ/id_sd.o OBJ/id_us_1.o OBJ/id_vh.o OBJ/id_vl.o OBJ/signon.o OBJ/wl_act1.o OBJ/wl_act2.o OBJ/wl_agent.o OBJ/wl_debug.o OBJ/wl_draw.o OBJ/wl_game.o OBJ/wl_inter.o OBJ/wl_main.o OBJ/wl_menu.o OBJ/wl_play.o OBJ/wl_state.o OBJ/sdl_winmain.o OBJ/fmopl.o OBJ/wl_atmos.o OBJ/wl_dir3dspr.o OBJ/wl_floorceiling.o OBJ/wl_parallax.o OBJ/wl_shade.o OBJ/mpclient.o
 LINKOBJ  = OBJ/wl_text.o OBJ/id_ca.o OBJ/id_in.o OBJ/id_pm.o OBJ/id_sd.o OBJ/id_us_1.o OBJ/id_vh.o OBJ/id_vl.o OBJ/signon.o OBJ/wl_act1.o OBJ/wl_act2.o OBJ/wl_agent.o OBJ/wl_debug.o OBJ/wl_draw.o OBJ/wl_game.o OBJ/wl_inter.o OBJ/wl_main.o OBJ/wl_menu.o OBJ/wl_play.o OBJ/wl_state.o OBJ/sdl_winmain.o OBJ/fmopl.o OBJ/wl_atmos.o OBJ/wl_dir3dspr.o OBJ/wl_floorceiling.o OBJ/wl_parallax.o OBJ/wl_shade.o OBJ/mpclient.o
-LIBS     = -L"D:/Dev-Cpp/MinGW64/lib32" -L"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32" -L"D:/W3DMP/lib" -static-libgcc -lws2_32 -mwindows -lmingw32 -lSDL -lSDL_mixer -m32
-INCS     = -I"D:/Dev-Cpp/MinGW64/include" -I"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include" -I"D:/W3DMP/include"
-CXXINCS  = -I"D:/Dev-Cpp/MinGW64/include" -I"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include/c++" -I"D:/W3DMP/include"
+LIBS     = -L"D:/Dev-Cpp/MinGW64/lib32" -L"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32" -L"lib" -static-libgcc -lws2_32 -mwindows -lmingw32 -lSDL -lSDL_mixer -m32
+INCS     = -I"D:/Dev-Cpp/MinGW64/include" -I"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include" -I"include"
+CXXINCS  = -I"D:/Dev-Cpp/MinGW64/include" -I"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include/c++" -I"include"
 BIN      = OBJ/Wolf4SDL.exe
 CXXFLAGS = $(CXXINCS) -m32
 CFLAGS   = $(INCS) -m32 -Dmain=SDL_main

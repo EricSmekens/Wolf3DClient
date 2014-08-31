@@ -1,2 +1,11 @@
 # Build
 OBJ
+
+# Projectfiles
+*.dev
+*.layout
+*.cbp
+*.dsp
+*.dsw
+*.sln
+*.vcproj
