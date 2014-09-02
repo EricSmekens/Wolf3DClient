@@ -1291,6 +1291,8 @@ void PlayLoop (void)
 
     do
     {
+    	char* message = gameClient.receive();
+    	printf("send failed with error: %s\n", message);
         PollControls ();
 
 //

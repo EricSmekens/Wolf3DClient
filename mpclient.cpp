@@ -32,7 +32,7 @@ int MPClient::startMPClient()
     hints.ai_protocol = IPPROTO_TCP;
 
     // Resolve the server address and port
-    iResult = getaddrinfo("25.217.237.139", DEFAULT_PORT, &hints, &result);
+    iResult = getaddrinfo("25.220.91.24", DEFAULT_PORT, &hints, &result);
     if ( iResult != 0 ) {
         printf("getaddrinfo failed with error: %d\n", iResult);
         WSACleanup();
@@ -75,8 +75,6 @@ int MPClient::startMPClient()
 int MPClient::closeMPClient()
 {
 	int iResult;
-	char recvbuf[DEFAULT_BUFLEN];
-    int recvbuflen = DEFAULT_BUFLEN;
 	
 	// shutdown the connection since no more data will be sent
     iResult = shutdown(ConnectSocket, SD_SEND);
@@ -86,20 +84,7 @@ int MPClient::closeMPClient()
         WSACleanup();
         return 1;
     }
-
-    // Receive until the peer closes the connection
-    do {
-
-        iResult = recv(ConnectSocket, recvbuf, recvbuflen, 0);
-        if ( iResult > 0 )
-            printf("Bytes received: %d\n", iResult);
-        else if ( iResult == 0 )
-            printf("Connection closed\n");
-        else
-            printf("recv failed with error: %d\n", WSAGetLastError());
-
-    } while( iResult > 0 );
-
+    
     // cleanup
     closesocket(ConnectSocket);
     WSACleanup();
@@ -122,4 +107,20 @@ int MPClient::sendbyMPClient(char *sendbuf)
 
     printf("Bytes Sent: %ld\n", iResult);
     return 0;
+}
+
+char* MPClient::receive()
+{
+	int iResult;
+	char recvbuf[DEFAULT_BUFLEN];
+    int recvbuflen = DEFAULT_BUFLEN;
+    
+    iResult = recv(ConnectSocket, recvbuf, recvbuflen, 0);
+    if ( iResult > 0 )
+        printf("Bytes received: %d\n", iResult);
+    else if ( iResult == 0 )
+        printf("Connection closed\n");
+    else
+        printf("recv failed with error: %d\n", WSAGetLastError());
+
 }

@@ -11,6 +11,7 @@ class MPClient
 	  int startMPClient();
 	  int closeMPClient();
 	  int sendbyMPClient(char*);
+	  char* receive();
 	  
 	private:
 	  SOCKET ConnectSocket;
