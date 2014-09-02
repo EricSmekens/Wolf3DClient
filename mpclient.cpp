@@ -122,5 +122,6 @@ char* MPClient::receive()
         printf("Connection closed\n");
     else
         printf("recv failed with error: %d\n", WSAGetLastError());
-
+        
+    return recvbuf;
 }
