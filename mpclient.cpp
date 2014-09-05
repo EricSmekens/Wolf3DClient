@@ -11,7 +11,7 @@
 #define DEFAULT_PORT "8444"
 
 int MPClient::startMPClient()
-{
+{	
     WSADATA wsaData;
     ConnectSocket = INVALID_SOCKET; 
     struct addrinfo *result = NULL,
@@ -69,6 +69,10 @@ int MPClient::startMPClient()
         return 1;
     }
     
+    //Set not-blocking mode
+	u_long iMode=1;
+	ioctlsocket(ConnectSocket,FIONBIO,&iMode); 
+    
     return 0;
 }
 
@@ -109,19 +113,33 @@ int MPClient::sendbyMPClient(char *sendbuf)
     return 0;
 }
 
-char* MPClient::receive()
+int MPClient::receive(char message[])
 {
 	int iResult;
 	char recvbuf[DEFAULT_BUFLEN];
     int recvbuflen = DEFAULT_BUFLEN;
     
     iResult = recv(ConnectSocket, recvbuf, recvbuflen, 0);
-    if ( iResult > 0 )
+    if (iResult > 0)
+    {
         printf("Bytes received: %d\n", iResult);
-    else if ( iResult == 0 )
+        strcpy(message, recvbuf);
+    }
+    else if (iResult == 0)
+    {
         printf("Connection closed\n");
+        return 1;
+    }
     else
-        printf("recv failed with error: %d\n", WSAGetLastError());
-        
-    return recvbuf;
+    {
+    	int nError = WSAGetLastError();
+		if (nError != WSAEWOULDBLOCK) // Do nothing if it's there is no data.
+		{			
+			printf("recv failed with error: %d\n", nError);
+			return nError;
+		}
+		return 1;
+    }
+            
+    return 0;
 }

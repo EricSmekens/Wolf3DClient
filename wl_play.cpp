@@ -1291,13 +1291,18 @@ void PlayLoop (void)
 
     do
     {
-    	char* message = gameClient.receive();
-    	printf("send failed with error: %s\n", message);
+    	char message[512] = ""; 
+		int receiveResult = gameClient.receive(message);
+		if (receiveResult == 0) //Do something with the message!
+		{
+			printf("Received: %s\n", message);	
+		}
+    	
         PollControls ();
 
-//
-// actor thinking
-//
+		//
+		// actor thinking
+		//
         madenoise = false;
 
         MoveDoors ();
