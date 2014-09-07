@@ -1298,6 +1298,11 @@ void PlayLoop (void)
 			printf("Received: %s\n", message);	
 		}
     	
+    	//Send your location
+    	char answer[512] = "";
+    	sprintf(answer, "POS: %d, %d, %d", player->x, player->y, player->angle);
+    	gameClient.sendbyMPClient(answer);
+    	
         PollControls ();
 
 		//
