@@ -1228,7 +1228,8 @@ think:
     //
     // think
     //
-    think = (void (*)(objtype *)) ob->state->think;
+    //think = (void (*)(objtype *)) ob->state->think;
+    think = false;
     if (think)
     {
         think (ob);
@@ -1295,7 +1296,18 @@ void PlayLoop (void)
 		int receiveResult = gameClient.receive(message);
 		if (receiveResult == 0) //Do something with the message!
 		{
-			printf("Received: %s\n", message);	
+			if(strstr(message, "POS:") != NULL)
+			{
+				int sockPlayer;
+				int sockX;
+				int sockY;
+				int sockAngle;
+				sscanf(message, "Player[%d]: POS: %d, %d, %d", &sockPlayer, &sockX, &sockY, &sockAngle);
+
+				//statetype *newState;
+				//SpawnNewObj(sockX, sockY, newState);
+			}
+			printf("Received: %s\n", message);
 		}
     	
     	//Send your location
