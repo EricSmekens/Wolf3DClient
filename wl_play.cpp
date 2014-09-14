@@ -27,7 +27,7 @@
 boolean madenoise;              // true when shooting or screaming
 
 exit_t playstate;
-f
+
 static musicnames lastmusicchunk = (musicnames) 0;
 
 static int DebugOk;
@@ -1305,11 +1305,11 @@ void PlayLoop (void)
 				sscanf(message, "Player[%d]: POS: %d, %d, %d", &sockPlayer, &sockX, &sockY, &sockAngle);
 				for (obj = player; obj; obj = obj->next)
         		{
-        			if obj.projID = projID;
+        			if (obj->projID == sockPlayer)
         			{
-        				obj.tilex = sockX;
-        				obj.tiley = sockY;
-        				obj.angle = sockAngle;
+        				obj->tilex = sockX;
+        				obj->tiley = sockY;
+        				obj->angle = sockAngle;
         			}
     			}	
 				
@@ -1319,9 +1319,9 @@ void PlayLoop (void)
 			{
 				int newID;
 				sscanf(message, "Player[%i]: CREATE", &newID);
-				getNewActor();
+				GetNewActor();
 				//spawnNewObj(x,y,blabla) FOR LATER
-				newobj.projID = newID;
+				newobj->projID = newID;
 				// FILL IN OTHER SHIT
 			}
 			else if(strstr(message, "DESTROY") != NULL)
@@ -1330,9 +1330,9 @@ void PlayLoop (void)
 				sscanf(message, "Player[%i]: DESTROY", &remID);
 				for (obj = player; obj; obj = obj->next)
         		{
-        			if obj.projID = remID;
+        			if (obj->projID == remID)
         			{
-        				removeObj(obj);
+        				RemoveObj(obj);
         			}
     			}	
 			}
