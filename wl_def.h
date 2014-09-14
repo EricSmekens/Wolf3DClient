@@ -782,7 +782,8 @@ typedef struct objstruct
     short       ticcount;
     classtype   obclass;
     statetype   *state;
-
+	int			projID;
+	
     uint32_t    flags;              // FL_SHOOTABLE, etc
 
     int32_t     distance;           // if negative, wait for that door to open

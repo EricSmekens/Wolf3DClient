@@ -27,7 +27,7 @@
 boolean madenoise;              // true when shooting or screaming
 
 exit_t playstate;
-
+f
 static musicnames lastmusicchunk = (musicnames) 0;
 
 static int DebugOk;
@@ -1303,9 +1303,38 @@ void PlayLoop (void)
 				int sockY;
 				int sockAngle;
 				sscanf(message, "Player[%d]: POS: %d, %d, %d", &sockPlayer, &sockX, &sockY, &sockAngle);
-
-				//statetype *newState;
-				//SpawnNewObj(sockX, sockY, newState);
+				for (obj = player; obj; obj = obj->next)
+        		{
+        			if obj.projID = projID;
+        			{
+        				obj.tilex = sockX;
+        				obj.tiley = sockY;
+        				obj.angle = sockAngle;
+        			}
+    			}	
+				
+				
+			}
+			else if(strstr(message, "CREATE") != NULL)
+			{
+				int newID;
+				sscanf(message, "Player[%i]: CREATE", &newID);
+				getNewActor();
+				//spawnNewObj(x,y,blabla) FOR LATER
+				newobj.projID = newID;
+				// FILL IN OTHER SHIT
+			}
+			else if(strstr(message, "DESTROY") != NULL)
+			{
+				int remID;
+				sscanf(message, "Player[%i]: DESTROY", &remID);
+				for (obj = player; obj; obj = obj->next)
+        		{
+        			if obj.projID = remID;
+        			{
+        				removeObj(obj);
+        			}
+    			}	
 			}
 			printf("Received: %s\n", message);
 		}
@@ -1326,8 +1355,10 @@ void PlayLoop (void)
         MovePWalls ();
 
         for (obj = player; obj; obj = obj->next)
-            DoActor (obj);
-
+        {
+  			DoActor (obj);
+    	}
+        
         UpdatePaletteShifts ();
 
         ThreeDRefresh ();
