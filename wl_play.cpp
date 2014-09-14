@@ -1296,47 +1296,51 @@ void PlayLoop (void)
 		int receiveResult = gameClient.receive(message);
 		if (receiveResult == 0) //Do something with the message!
 		{
-			if(strstr(message, "POS:") != NULL)
-			{
-				int sockPlayer;
-				int sockX;
-				int sockY;
-				int sockAngle;
-				sscanf(message, "Player[%d]: POS: %d, %d, %d", &sockPlayer, &sockX, &sockY, &sockAngle);
-				for (obj = player; obj; obj = obj->next)
-        		{
-        			if (obj->projID == sockPlayer)
-        			{
-        				obj->tilex = sockX;
-        				obj->tiley = sockY;
-        				obj->angle = sockAngle;
-        			}
-    			}	
-				
-				
+			char * pch;
+			pch = strtok(message,"|");
+			while (pch != NULL && pch != 0)
+			{		
+				if(strstr(pch, "POS:") != NULL)
+				{
+					int sockPlayer;
+					int sockX;
+					int sockY;
+					int sockAngle;
+					sscanf(pch, "Player[%d]: POS: %d, %d, %d", &sockPlayer, &sockX, &sockY, &sockAngle);
+					for (obj = player; obj; obj = obj->next)
+	        		{
+	        			if (obj->projID == sockPlayer)
+	        			{
+	        				obj->tilex = sockX;
+	        				obj->tiley = sockY;
+	        				obj->angle = sockAngle;
+	        			}
+	    			}											
+				}
+				else if(strstr(pch, "CREATE") != NULL)
+				{
+					int newID;
+					sscanf(pch, "Player[%i]: CREATE", &newID);
+					GetNewActor();
+					//spawnNewObj(x,y,blabla) FOR LATER
+					newobj->projID = newID;
+					// FILL IN OTHER SHIT
+				}
+				else if(strstr(pch, "DESTROY") != NULL)
+				{
+					int remID;
+					sscanf(pch, "Player[%i]: DESTROY", &remID);
+					for (obj = player; obj; obj = obj->next)
+	        		{
+	        			if (obj->projID == remID)
+	        			{
+	        				RemoveObj(obj);
+	        			}
+	    			}	
+				}
+				printf("Received: %s\n", pch);
+				pch = strtok(NULL, "\r\n");	
 			}
-			else if(strstr(message, "CREATE") != NULL)
-			{
-				int newID;
-				sscanf(message, "Player[%i]: CREATE", &newID);
-				GetNewActor();
-				//spawnNewObj(x,y,blabla) FOR LATER
-				newobj->projID = newID;
-				// FILL IN OTHER SHIT
-			}
-			else if(strstr(message, "DESTROY") != NULL)
-			{
-				int remID;
-				sscanf(message, "Player[%i]: DESTROY", &remID);
-				for (obj = player; obj; obj = obj->next)
-        		{
-        			if (obj->projID == remID)
-        			{
-        				RemoveObj(obj);
-        			}
-    			}	
-			}
-			printf("Received: %s\n", message);
 		}
     	
     	//Send your location
