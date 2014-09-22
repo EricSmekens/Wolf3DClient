@@ -1321,10 +1321,12 @@ void PlayLoop (void)
 				{
 					int newID;
 					sscanf(pch, "Player[%i]: CREATE", &newID);
-					GetNewActor();
-					//spawnNewObj(x,y,blabla) FOR LATER
+					//GetNewActor();
+					SpawnDeadGuard(0,0);
+					//spawnNewObj(0,0,&s_grdpath1);// FOR LATER
 					newobj->projID = newID;
 					// FILL IN OTHER SHIT
+					
 				}
 				else if(strstr(pch, "DESTROY") != NULL)
 				{
@@ -1344,9 +1346,13 @@ void PlayLoop (void)
 		}
     	
     	//Send your location
-    	char answer[512] = "";
-    	sprintf(answer, "POS: %d, %d, %d", player->x, player->y, player->angle);
-    	gameClient.sendbyMPClient(answer);
+    	if (gameClientUpdateCounter++ > 10)
+    	{
+	    	char answer[512] = "";
+	    	sprintf(answer, "POS: %d, %d, %d|", player->x, player->y, player->angle);
+	    	gameClient.sendbyMPClient(answer);
+	    	gameClientUpdateCounter = 0;
+    	}
     	
         PollControls ();
 

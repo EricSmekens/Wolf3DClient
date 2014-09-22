@@ -10,6 +10,7 @@
 #endif
 
 MPClient gameClient;
+int gameClientUpdateCounter;
 /*
 =============================================================================
 
@@ -1370,6 +1371,7 @@ void Died (void)
 void GameLoop (void)
 {
 	//Testlocation for creating a client.
+	gameClientUpdateCounter = 0;
 	gameClient.startMPClient();
 
     boolean died;

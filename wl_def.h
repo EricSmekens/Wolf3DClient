@@ -1039,6 +1039,7 @@ extern  memptr      demobuffer;
 //
 // control info
 //
+extern  int 		gameClientUpdateCounter;
 extern  MPClient    gameClient;
 
 extern  boolean     mouseenabled,joystickenabled;
