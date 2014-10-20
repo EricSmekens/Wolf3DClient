@@ -1320,9 +1320,8 @@ void PlayLoop (void)
 				else if(strstr(pch, "CREATE") != NULL)
 				{
 					int newID;
-					sscanf(pch, "Player[%i]: CREATE", &newID);
-					//GetNewActor();
-					SpawnDeadGuard(0,0);
+					sscanf(pch, "Player[%i]: CREATE", &newID);				
+					SpawnFat(player->tilex+1, player->tilex+1);
 					//spawnNewObj(0,0,&s_grdpath1);// FOR LATER
 					newobj->projID = newID;
 					// FILL IN OTHER SHIT
@@ -1349,7 +1348,7 @@ void PlayLoop (void)
     	if (gameClientUpdateCounter++ > 10)
     	{
 	    	char answer[512] = "";
-	    	sprintf(answer, "POS: %d, %d, %d|", player->x, player->y, player->angle);
+	    	sprintf(answer, "POS: %d, %d, %d|", player->tilex, player->tilex, player->angle);
 	    	gameClient.sendbyMPClient(answer);
 	    	gameClientUpdateCounter = 0;
     	}
