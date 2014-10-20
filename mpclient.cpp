@@ -109,7 +109,7 @@ int MPClient::sendbyMPClient(char *sendbuf)
         return 1;
     }
 
-    printf("Bytes Sent: %ld\n", iResult);
+    //printf("Bytes Sent: %ld\n", iResult);
     return 0;
 }
 
@@ -122,7 +122,7 @@ int MPClient::receive(char message[])
     iResult = recv(ConnectSocket, recvbuf, recvbuflen, 0);
     if (iResult > 0)
     {
-        printf("Bytes received: %d\n", iResult);
+        //printf("Bytes received: %d\n", iResult);
         strcpy(message, recvbuf);
     }
     else if (iResult == 0)

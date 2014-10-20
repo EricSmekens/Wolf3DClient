@@ -1299,7 +1299,8 @@ void PlayLoop (void)
 			char * pch;
 			pch = strtok(message,"|");
 			while (pch != NULL && pch != 0)
-			{		
+			{
+				//printf("%s", pch);		
 				if(strstr(pch, "POS:") != NULL)
 				{
 					int sockPlayer;
@@ -1307,12 +1308,15 @@ void PlayLoop (void)
 					int sockY;
 					int sockAngle;
 					sscanf(pch, "Player[%d]: POS: %d, %d, %d", &sockPlayer, &sockX, &sockY, &sockAngle);
+					printf("Player[%d]: POS: %d, %d, %d\r\n", sockPlayer, sockX, sockY, sockAngle);
 					for (obj = player; obj; obj = obj->next)
 	        		{
 	        			if (obj->projID == sockPlayer)
-	        			{
+	        			{			
 	        				obj->tilex = sockX;
 	        				obj->tiley = sockY;
+	        				obj->x = ((int32_t)sockX<<TILESHIFT)+TILEGLOBAL/2;
+    						obj->y = ((int32_t)sockY<<TILESHIFT)+TILEGLOBAL/2;
 	        				obj->angle = sockAngle;
 	        			}
 	    			}											
@@ -1320,8 +1324,9 @@ void PlayLoop (void)
 				else if(strstr(pch, "CREATE") != NULL)
 				{
 					int newID;
-					sscanf(pch, "Player[%i]: CREATE", &newID);				
-					SpawnFat(player->tilex+1, player->tilex+1);
+					sscanf(pch, "Player[%i]: CREATE", &newID);
+					printf("Player[%i]: CREATED", newID);				
+					SpawnFat(player->tilex+1, player->tiley+3);
 					//spawnNewObj(0,0,&s_grdpath1);// FOR LATER
 					newobj->projID = newID;
 					// FILL IN OTHER SHIT
@@ -1339,13 +1344,13 @@ void PlayLoop (void)
 	        			}
 	    			}	
 				}
-				printf("Received: %s\n", pch);
+				//printf("Rec: %s\r\n", pch);
 				pch = strtok(NULL, "\r\n");	
 			}
 		}
     	
     	//Send your location
-    	if (gameClientUpdateCounter++ > 10)
+    	if (gameClientUpdateCounter++ > 40)
     	{
 	    	char answer[512] = "";
 	    	sprintf(answer, "POS: %d, %d, %d|", player->tilex, player->tilex, player->angle);
